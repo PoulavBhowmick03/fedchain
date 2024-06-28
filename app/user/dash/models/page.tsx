@@ -2,7 +2,6 @@
 import Head from "@/app/user/components/Head";
 import Sidebar from "@/app/user/components/Sidebar";
 import Train from "@/app/user/components/Train";
-import WalletContextProvider from '@/components/WaletContextProvider'
 import WalletNotConnected from "@/components/WalletNotConnected";
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { useState } from "react";

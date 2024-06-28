@@ -9,24 +9,24 @@ interface FAQ {
 
 const faqData: FAQ[] = [
   {
-    question: 'What is AlchemistAI?',
+    question: 'What is FedChain?',
     answer:
-      'AlchemistAI is a platform that helps people recover from medical conditions and injuries. We provide a range of tools and resources to support your recovery journey.',
+      'FedChain is a platform that helps people recover from medical conditions and injuries. We provide a range of tools and resources to support your recovery journey.',
   },
   {
-    question: 'How does AlchemistAI work?',
+    question: 'How does FedChain work?',
     answer:
-      'AlchemistAI offers a comprehensive set of features, including personalized treatment plans, progress tracking, and access to a community of healthcare professionals and peers. Our platform is designed to empower you throughout your recovery process.',
+      'FedChain offers a comprehensive set of features, including personalized treatment plans, progress tracking, and access to a community of healthcare professionals and peers. Our platform is designed to empower you throughout your recovery process.',
   },
   {
-    question: 'Is AlchemistAI free to use?',
+    question: 'Is FedChain free to use?',
     answer:
-      'AlchemistAI offers both free and paid subscription plans. The free plan provides basic access to our platform, while the paid plans unlock additional features and support. You can learn more about our pricing options on the Pricing page.',
+      'FedChain offers both free and paid subscription plans. The free plan provides basic access to our platform, while the paid plans unlock additional features and support. You can learn more about our pricing options on the Pricing page.',
   },
   {
-    question: 'How do I get started with AlchemistAI?',
+    question: 'How do I get started with FedChain?',
     answer:
-      'To get started with AlchemistAI, simply sign up on our website. You will be guided through the onboarding process, where you can create your profile, set up your recovery goals, and start using our tools and resources. Our team is also available to assist you throughout your journey.',
+      'To get started with FedChain, simply sign up on our website. You will be guided through the onboarding process, where you can create your profile, set up your recovery goals, and start using our tools and resources. Our team is also available to assist you throughout your journey.',
   },
 ];
 

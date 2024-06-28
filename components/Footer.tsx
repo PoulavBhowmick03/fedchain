@@ -6,7 +6,7 @@ const Footer = () => {
         <h2 className="text-3xl font-extrabold text-gray-300 sm:text-5xl text-shadow-purple">
   Empower Your AI Journey
 </h2>          <p className="mx-auto mt-4 max-w-sm text-gray-400">
-            Discover the power of AlchemistAI and unlock new possibilities for
+            Discover the power of FedChain and unlock new possibilities for
             your projects.
           </p>
 

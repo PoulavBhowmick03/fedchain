@@ -23,6 +23,7 @@ const DepositSol = () => {
     const wallet = useAnchorWallet();
     const [amount, setAmount] = useState<number>(0);
     const [orgOwner, setOrgOwner] = useState("");
+    
 
     useEffect(() => {
         if (wallet) {
@@ -33,6 +34,8 @@ const DepositSol = () => {
             setProgram(program);
         }
     }, [connection, wallet]);
+
+    
 
     const handleDeposit = async () => {
         if (!program || !wallet || amount <= 0 || !orgOwner) return;

@@ -1,11 +1,18 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useAnchorWallet } from '@solana/wallet-adapter-react';
 
 const UploadPyFile = () => {
+
+  const wallet = useAnchorWallet()
+
   const [file, setFile] = useState(null);
   const [cid, setCid] = useState(null);
   const [error, setError] = useState(null);
+  const [address, setAddress] = useState('')
+  const [orgName, setOrgName] = useState('')
+  const [id, setId] = useState('')
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -13,6 +20,33 @@ const UploadPyFile = () => {
       setError(null);
     }
   };
+
+  useEffect(() => {
+    if (wallet) {
+        const publicKey = wallet.publicKey.toString()
+        setAddress(publicKey)
+    }
+  }, [wallet])
+
+  useEffect(() => {
+    const call = async () => {
+      const response = await axios.get('http://localhost:3000/api/org');
+      const orgs = response.data;
+
+      if (address !== '') {
+        const org = orgs.find(org => org.walletAddress === address);
+
+        if (org) {
+            setOrgName(org.name)
+            setId(org.id)
+        } else {
+            console.log('Organization not found');
+        }
+      }
+    }
+    call()
+  }, [address])
+
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -69,6 +103,17 @@ const UploadPyFile = () => {
       setCid(res.data.IpfsHash);
       console.log(cid)
       setError(null);
+
+      const data = {
+        cid: cid,
+        walletAddress: address,
+        OrgName: orgName,
+        id: id
+    };
+
+    const response = await axios.post('http://localhost:3000/api/upload', data);
+
+
     } catch (err) {
       setError('Error uploading file');
     }

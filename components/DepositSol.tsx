@@ -1,3 +1,4 @@
+// depositSol.tsx
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -5,7 +6,6 @@ import { Program, AnchorProvider, web3, BN } from "@project-serum/anchor";
 import idl from "@/app/idl.json";
 import dynamic from 'next/dynamic';
 import * as anchor from "@project-serum/anchor";
-import { publicKey } from '@project-serum/anchor/dist/cjs/utils';
 
 const WalletMultiButtonDynamic = dynamic(
     async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
@@ -77,6 +77,25 @@ const DepositSol = () => {
                 .rpc();
 
             console.log("Deposit successful!");
+
+            // Update user's solDeposited in the database
+            const response = await fetch('/api/depositSol', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    walletAddress: wallet.publicKey.toString(),
+                    amount: amount * web3.LAMPORTS_PER_SOL,
+                }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                console.log("Database updated:", data);
+            } else {
+                console.error("Failed to update database:", data);
+            }
         } catch (error) {
             console.error("Error during deposit:", error);
         }

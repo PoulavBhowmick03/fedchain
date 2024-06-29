@@ -111,7 +111,7 @@ const Sidebar = () => {
                   >
                     <FaRobot className='h-6 w-6' />
                     <span className="absolute top-1/2 ms-10 -translate-y-1/2 rounded px-6 mx-10 py-1.5 text-xl font-medium text-white hover:text-gray-800">
-                      Train
+                      Models
                     </span>
                   </a>
                 </li>

@@ -120,7 +120,7 @@ const UploadPyFile = () => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen px-4 sm:px-8 lg:px-28 flex justify-center">
+    <div className="bg-gray-100 dark:bg-gray-900 h-screen px-4 sm:px-8 lg:px-28 flex justify-center">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-black dark:text-white mb-8">
           Upload your client.py file

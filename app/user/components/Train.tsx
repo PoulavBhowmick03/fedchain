@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import modelsData from '../../../public/models.json';
+import DepositSol from "@/components/DepositSol";
 
 interface Model {
   id: number;
@@ -14,6 +15,8 @@ interface Model {
 
 const Train: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<Model | null>(null);
 
   const categories = Object.keys(modelsData);
 
@@ -25,9 +28,13 @@ const Train: React.FC = () => {
   };
 
   const filteredModels = getFilteredModels();
+  const handleModelClick = (model: Model) => {
+    setSelectedModel(model);
+    setIsModalOpen(true);
+  };
 
-  return ( 
-    <section className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 sm:ml-48">
+  return (
+    <section  className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 sm:ml-48">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">Train the available ML models</h2>
@@ -36,7 +43,7 @@ const Train: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-2">
+        <div className="mt-8 flex flex-wrap justify-center gap-2 " >
           <button
             onClick={() => setSelectedCategory(null)}
             className={`px-4 py-2 rounded ${!selectedCategory ? 'bg-purple-500 text-white' : 'bg-gray-200 text-gray-800'}`}
@@ -54,10 +61,12 @@ const Train: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3" onClick={() => setIsModalOpen(!isModalOpen)}>
           {filteredModels.map((model: Model) => (
-            <Link key={model.id} href={`/organisation/dash/models/model/${model.id}`}>
-            <div className="block rounded-xl border border-gray-300 dark:border-gray-700 p-8 shadow-xl transition hover:border-purple-500 hover:shadow-purple-500/10 h-60">
+            <div key={model.id}
+            onClick={() => handleModelClick(model)}
+>
+              <div className="block rounded-xl border border-gray-300 dark:border-gray-700 p-8 shadow-xl transition hover:border-purple-500 hover:shadow-purple-500/10 h-60">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="size-10 text-purple-500"
@@ -73,10 +82,17 @@ const Train: React.FC = () => {
                 <p className="mt-1 text-sm text-gray-900 dark:text-gray-300">{model.description}</p>
 
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
+      {isModalOpen && selectedModel && (
+        <DepositSol
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          modelName={selectedModel.name}
+        />
+      )}
     </section>
   );
 }

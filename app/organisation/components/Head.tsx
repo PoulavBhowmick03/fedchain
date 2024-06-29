@@ -8,6 +8,7 @@ import idl from '@/app/idl.json';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { useState, useEffect } from 'react';
 import WalletContextProvider from '@/components/WaletContextProvider';
+import RegisterOrgModal from '@/app/organisation/components/RegisterOrg'; // Import the modal component
 
 const programID = new PublicKey("8nDcKiH4thwNKiH4rW12kVVqtYhWN7wzSrzANeLGp1dj");
 
@@ -17,6 +18,7 @@ const Head = () => {
   const wallet = useWallet();
   const [status, setStatus] = useState('');
   const [user, setUser] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (wallet.connected && publicKey) {
@@ -50,6 +52,24 @@ const Head = () => {
     }
   };
 
+  const handleRegisterOrgClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleRegisterOrgSuccess = (publicKey: string) => {
+    console.log("Organization registered with public key:", publicKey);
+    // Handle success (e.g., update UI, show a message)
+  };
+
+  const handleRegisterOrgError = (error: any) => {
+    console.error("Error registering organization:", error);
+    // Handle error (e.g., show error message)
+  };
+
   return (
     <WalletContextProvider>
       <header className="dark:bg-gray-900 sm:ml-24">
@@ -64,37 +84,23 @@ const Head = () => {
 
             <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
               <button
-                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"
-                type="button"
-              >
-                <span className="text-sm font-medium">My Profile</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </button>
-
-              <button
                 className="block rounded-lg bg-red-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-700 focus:outline-none focus:ring"
                 type="button"
-                onClick={handleSubmit}
+                onClick={handleRegisterOrgClick}
               >
-                Register as User
+                Register as Org
               </button>
             </div>
           </div>
         </div>
       </header>
+
+      <RegisterOrgModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onSuccess={handleRegisterOrgSuccess}
+        onError={handleRegisterOrgError}
+      />
     </WalletContextProvider>
   );
 };

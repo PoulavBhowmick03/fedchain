@@ -15,7 +15,7 @@ export function OrgDashBody() {
             Use Machine Learning to lead to the future
           </h2>
           <p className="mt-4 text-left  text-base/6 text-neutral-200">
-            With over 100,000 mothly active users, FedAI is the best platform to let users train your models
+            With over 100,000 monthly active users, FedAI is the best platform to let users train your models
           </p>
         </div>
         <Image
@@ -39,13 +39,7 @@ export function OrgDashBody() {
           <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
             Register as an Organisation, deploy your models and get started Today
           </h2>
-          <button
-                className="block rounded-lg bg-green-600 px-5 sm:my-5 py-3 text-sm font-medium text-white transition hover:bg-red-700 focus:outline-none focus:ring"
-                type="button"
-                // onClick={handleSubmit}
-              >
-                Register as Organisation
-              </button>
+
         </div>
         <Image
           src="/linear.webp"

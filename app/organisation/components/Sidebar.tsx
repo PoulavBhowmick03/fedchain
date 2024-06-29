@@ -106,12 +106,12 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <a
-                    href="/organisation/dash/models"
+                    href="/organisation/upload"
                     className="group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-blue-700 active:text-blue-700 md:justify-start"
                   >
                     <FaRobot className='h-6 w-6' />
                     <span className="absolute top-1/2 ms-10 -translate-y-1/2 rounded px-6 mx-10 py-1.5 text-xl font-medium text-white hover:text-gray-800">
-                      Train
+                      Upload
                     </span>
                   </a>
                 </li>
@@ -128,7 +128,7 @@ const Sidebar = () => {
                 </li>
               </ul>
               <br />
-                <WalletMultiButtonDynamic />
+              <WalletMultiButtonDynamic />
 
             </div>
           </div>

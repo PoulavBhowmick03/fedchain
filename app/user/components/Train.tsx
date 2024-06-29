@@ -1,4 +1,5 @@
 // components/Train.tsx
+"use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
 import modelsData from '../../../public/models.json';

@@ -6,11 +6,12 @@ import idl from "../idl.json";
 import * as anchor from "@project-serum/anchor"
 import dynamic from 'next/dynamic';
 
-const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");
-
+const programID = new web3.PublicKey("8iCZiBVfJEw2kQk4FSLcxoJiUJCgDUdX6pgAGFUuz2eE");
+const localRpcUrl = "http://localhost:8899";
 export default function RegisterOrg() {
     const [program, setProgram] = useState<anchor.Program>()
     const { connection } = useConnection();
+    const localConnection = new web3.Connection(localRpcUrl);
     const wallet = useAnchorWallet();
     const [orgName, setOrgName] = useState('');
     const [registrationStatus, setRegistrationStatus] = useState('');
@@ -18,10 +19,12 @@ export default function RegisterOrg() {
         async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
         { ssr: false }
     );
-    
+
     useEffect(() => {
         if (wallet) {
-            const provider = new AnchorProvider(connection, wallet, {});
+            const provider = new AnchorProvider(localConnection, wallet, {
+                preflightCommitment: "processed"
+            }); 
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }
@@ -45,8 +48,8 @@ export default function RegisterOrg() {
                 .rpc();
 
             setRegistrationStatus("Organization registered successfully!");
-            
-            // Call backend API to sync org data
+
+            // Call backend 
             await fetch('/api/org', {
                 method: 'POST',
                 headers: {
@@ -65,11 +68,11 @@ export default function RegisterOrg() {
             <h1>Register Organization</h1>
             <WalletMultiButtonDynamic />
 
-            <input 
-            className='text-black'
-                type="text" 
-                value={orgName} 
-                onChange={(e) => setOrgName(e.target.value)} 
+            <input
+                className='text-black'
+                type="text"
+                value={orgName}
+                onChange={(e) => setOrgName(e.target.value)}
                 placeholder="Organization Name"
             />
             <button onClick={handleRegister}>Register</button>

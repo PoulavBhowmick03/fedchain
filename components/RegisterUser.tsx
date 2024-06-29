@@ -11,7 +11,7 @@ const WalletMultiButtonDynamic = dynamic(
     { ssr: false }
 );
 
-const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");
+const programID = new web3.PublicKey("8iCZiBVfJEw2kQk4FSLcxoJiUJCgDUdX6pgAGFUuz2eE");
 
 export default function RegisterUser() {
     const [program, setProgram] = useState<anchor.Program>()

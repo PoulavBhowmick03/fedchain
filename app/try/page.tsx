@@ -11,17 +11,22 @@ const WalletMultiButtonDynamic = dynamic(
     { ssr: false }
 );
 
-const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");
+const programID = new web3.PublicKey("8iCZiBVfJEw2kQk4FSLcxoJiUJCgDUdX6pgAGFUuz2eE");
+const localRpcUrl = "http://localhost:8899";
 
 export default function RegisterUser() {
     const [program, setProgram] = useState<anchor.Program>()
     const { connection } = useConnection();
+    const localConnection = new web3.Connection(localRpcUrl);
+
     const wallet = useAnchorWallet();
     const [registrationStatus, setRegistrationStatus] = useState('');
 
     useEffect(() => {
         if (wallet) {
-            const provider = new AnchorProvider(connection, wallet, {});
+            const provider = new AnchorProvider(localConnection, wallet, {
+                preflightCommitment: "processed"
+            });             
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }

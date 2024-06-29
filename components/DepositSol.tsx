@@ -12,11 +12,14 @@ const WalletMultiButtonDynamic = dynamic(
     { ssr: false }
 );
 
-const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");
+const programID = new web3.PublicKey("8iCZiBVfJEw2kQk4FSLcxoJiUJCgDUdX6pgAGFUuz2eE");
+const localRpcUrl = "http://localhost:8899";
 
 const DepositSol = () => {
     const [program, setProgram] = useState<anchor.Program | null>(null);
     const { connection } = useConnection();
+    const localConnection = new web3.Connection(localRpcUrl);
+
     const wallet = useAnchorWallet();
     const [amount, setAmount] = useState<number>(0);
     const [orgOwner, setOrgOwner] = useState("");
@@ -24,7 +27,9 @@ const DepositSol = () => {
 
     useEffect(() => {
         if (wallet) {
-            const provider = new AnchorProvider(connection, wallet, {});
+            const provider = new AnchorProvider(localConnection, wallet, {
+                preflightCommitment: "processed"
+            }); 
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }

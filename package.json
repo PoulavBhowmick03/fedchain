@@ -19,6 +19,7 @@
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.93.1",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
     "bn.js": "^5.2.1",
     "bs58": "^5.0.0",
     "clsx": "^2.1.1",

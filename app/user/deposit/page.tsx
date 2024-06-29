@@ -101,7 +101,7 @@ import DepositSol from "@/components/DepositSol";
 const DepositSolana = () => {
     return ( 
         <div>
-            <DepositSol/>
+            Hehe
         </div>
      );
 }

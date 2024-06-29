@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
-import idl from "../idl2.json";
+import idl from "../idl.json";
 import * as anchor from "@project-serum/anchor"
 import dynamic from 'next/dynamic';
 

@@ -64,7 +64,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
-import idl from '@/app/idl2.json';
+import idl from '@/app/idl.json';
 import * as anchor from "@project-serum/anchor";
 
 const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");

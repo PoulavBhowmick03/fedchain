@@ -4,7 +4,7 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Program, AnchorProvider, web3 } from '@project-serum/anchor';
 import { PublicKey } from '@solana/web3.js';
-import idl from '@/app/idl2.json';
+import idl from '@/app/idl.json';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { useState, useEffect } from 'react';
 import WalletContextProvider from '@/components/WaletContextProvider';

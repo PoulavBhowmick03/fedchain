@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -28,7 +29,7 @@ export default function RegisterOrg() {
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }
-    }, [connection, wallet]);
+    }, [connection, wallet, localConnection]);
 
     const handleRegister = async () => {
         if (!program || !wallet || !orgName) return;

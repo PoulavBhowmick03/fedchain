@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // depositSol.tsx
 "use client"
 import React, { useState, useEffect } from 'react';
@@ -33,9 +34,8 @@ const DepositSol = () => {
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }
-    }, [connection, wallet]);
-
-    
+    }, [connection, wallet, localConnection]);
+        
 
     const handleDeposit = async () => {
         if (!program || !wallet || amount <= 0 || !orgOwner) return;

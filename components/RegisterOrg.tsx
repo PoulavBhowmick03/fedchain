@@ -67,8 +67,7 @@ import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import idl from '@/app/idl.json';
 import * as anchor from "@project-serum/anchor";
 
-const programID = new web3.PublicKey("D1sEXfGQqBB8ZtTqasjCV7RnLdWtBCyhDcoGQXnewEDE");
-
+const programID = new web3.PublicKey("8iCZiBVfJEw2kQk4FSLcxoJiUJCgDUdX6pgAGFUuz2eE");
 export default function RegisterOrg() {
   const [program, setProgram] = useState<anchor.Program | null>(null);
   const { connection } = useConnection();

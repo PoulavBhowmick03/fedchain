@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import WalletContextProvider from "@/components/WaletContextProvider";
+import {DiamanteProvider} from "@/context/DiamanteContext"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <WalletContextProvider>
-      <body className={inter.className}>{children}</body>
+        <DiamanteProvider>
+          <body className={inter.className}>{children}</body>
+        </DiamanteProvider>
     </WalletContextProvider>
     </html>
   );

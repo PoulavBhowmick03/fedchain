@@ -23,11 +23,17 @@ export function DiamanteProvider({children}) {
         initializeDiamante()
     }, [])
 
+    // useEffect(() => {
+    //     console.log(secret, publicAdd)
+    //     console.log('use effect')
+    // }, [secret, publicAdd])
+
     async function createAddress() {
         if (server) {
             const pair = Keypair.random()
         setPublicAdd(pair.publicKey())
         setSecret(pair.secret())
+        // console.log(secret, publicAdd)
         try {
             const response = await fetch(
               `https://friendbot.diamcircle.io?addr=${encodeURIComponent(
@@ -65,8 +71,8 @@ export function DiamanteProvider({children}) {
                 console.log(error.extras);
                 return error;
               });
-            console.log(txResponse);
-            console.log("Created the new account", childAccount.publicKey());
+            // console.log(txResponse);
+            // console.log("Created the new account", childAccount.publicKey());
       
             const account = await server.loadAccount(pair.publicKey());
             setBalance(account.balances[0].balance)

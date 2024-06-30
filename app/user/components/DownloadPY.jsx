@@ -6,7 +6,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import dynamic from 'next/dynamic';
 import { sha256 } from 'js-sha256';
 
-const CID = 'QmVKWgozBZ4rxYSwmBXzXbxizoXiSVcvYjpzN88FvHdXjr';
+const CID = 'Qma3k61CcvxEZAL8ENVQmMfihnPeEbh7K35fzfaKM45tko';
 
 // Dynamically import the SendSolButton component
 const SendSolButton = dynamic(
@@ -75,7 +75,10 @@ const DownloadPage = () => {
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Download client.py</h1>
         <p className="text-lg mb-10">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+          Download the client side of the program to train with your own data and automatically update the parameters
+          <br />
+          earning your incentive on the way
+        
         </p>
         <button
           onClick={handleDownload}

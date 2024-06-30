@@ -16,23 +16,23 @@ interface Blog {
 const Body: React.FC = () => {
   const modelData: Model[] = [
     {
-      date: 'April 28, 2023',
+      date: 'June 28, 2023',
       modelName: 'COVID-19 X-Ray Model',
       modelLink: '/dashboard/trained',
     },
     {
-      date: 'April 19, 2023',
-      modelName: 'BERT Model',
+      date: 'June 29, 2023',
+      modelName: 'Lung Cancer detection Model',
       modelLink: '#',
     },
     {
-      date: 'April 6, 2023',
-      modelName: 'ResNet Model',
+      date: 'June 30, 2023',
+      modelName: 'Pneumonia detection Model',
       modelLink: '#',
     },
   ];
 
-  const blogData: Blog[] = [
+  const blogData = [
     {
       thumbnail: 'https://via.placeholder.com/150',
       title: '10 Tips for Effective Machine Learning',

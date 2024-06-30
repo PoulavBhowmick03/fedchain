@@ -30,7 +30,7 @@ export function TypeWriter() {
     <a href="/user/dash">Join as a User</a>
   </button>
   <button className="w-60 h-20 rounded-2xl bg-white text-black border hover:bg-gray-500 hover:text-white border-black text-xl transition-colors duration-300 ease-in-out">
-    <a href="/organisation/dash">Join as an Organisation</a>
+    <a href="/organisation/dash/models">Join as an Organisation</a>
   </button>
 </div>
     </div>

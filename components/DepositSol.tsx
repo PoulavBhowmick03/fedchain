@@ -104,9 +104,9 @@ const DepositSol: React.FC<DepositSolModalProps> = ({ isOpen, onClose, modelName
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
-      <div className="bg-gradient-to-br from-purple-900 to-indigo-900 p-8 rounded-2xl max-w-md w-full shadow-2xl">
+      <div className="bg-gradient-to-br from-purple-900 to-indigo-900 p-10 rounded-2xl  shadow-2xl">
         <h2 className="text-3xl font-bold mb-6 text-white">Deposit SOL for {modelName}</h2>
-        <p className="mb-6 text-purple-200">Your wallet: {wallet?.publicKey.toString()}</p>
+        <p className="mb-6 flex flex-wrap text-purple-200">Your wallet: {wallet?.publicKey.toString()}</p>
         <input
           className='w-full p-3 mb-6 bg-purple-800 border border-purple-600 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500'
           type="number"
@@ -127,7 +127,7 @@ const DepositSol: React.FC<DepositSolModalProps> = ({ isOpen, onClose, modelName
             onClick={handleDeposit}
             disabled={!wallet || amount <= 0 || !orgOwner}
           >
-            Deposit
+            Stake
           </button>
           <button
             className="bg-purple-800 text-purple-200 px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { NextPage } from "next";
+import Link from "next/link";
 
 import Sidebar from "@/app/user/components/Sidebar";
 import { cn } from "@/utils/cn";
@@ -30,13 +31,15 @@ const plans = [
         title: "Premium",
         price: "$20",
         current: false,
-        description: "Unlock premium features and enhanced support."
+        description: "Unlock premium features and enhanced support.",
+        link: "/user/dash/subscription/premium"
     },
     {
         title: "Pro",
         price: "$50",
         current: false,
-        description: "Full access to all features with priority support and customization options."
+        description: "Full access to all features with priority support and customization options.",
+        link: "/user/dash/subscription/pro"
     },
 ];
 
@@ -83,20 +86,21 @@ const Subscription: NextPage = () => {
                                         {plan.current && (
                                             <p className="mt-2 text-sm text-green-500">Current Plan</p>
                                         )}
-                                        <button
-                                            className="mt-4 px-4 py-2 bg-purple-500 text-white rounded-md shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-                                        >
-                                            Upgrade
-                                        </button>
+                                        <Link href={plan.link || "#"}>
+                                            <button
+                                                className="mt-4 px-4 py-2 bg-purple-500 text-white rounded-md shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                                            >
+                                                {plan.current ? "Current" : "Upgrade"}
+                                            </button>
+                                        </Link>
                                     </motion.div>
                                 ))}
                             </div>
-                        </div></div>
+                        </div>
+                    </div>
                 ) : (
                     <WalletNotConnected/>
-                )
-                }
-
+                )}
             </div>
         </WalletContextProvider>
     );

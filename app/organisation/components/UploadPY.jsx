@@ -111,7 +111,7 @@ const UploadPyFile = () => {
         id: id
     };
 
-    const response = await axios.post('http://localhost:3000/api/upload', data);
+    // const response = await axios.post('http://localhost:3000/api/upload', data);
 
 
     } catch (err) {
@@ -125,11 +125,6 @@ const UploadPyFile = () => {
         <h1 className="text-3xl font-bold text-black dark:text-white mb-8">
           Upload your client.py file
         </h1>
-        {error && (
-          <div className="text-red-500 mb-4">
-            {error}
-          </div>
-        )}
         {cid && (
             <div className="text-green-500 mb-4">
                 File uploaded successfully! CID: {cid}

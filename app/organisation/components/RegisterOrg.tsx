@@ -28,12 +28,10 @@ export default function RegisterOrgModal({ isOpen, onClose, onSuccess, onError }
     const [registrationStatus, setRegistrationStatus] = useState('');
 
     useEffect(() => {
-        if (wallet && connection) {
-            const provider = new AnchorProvider(
-                connection,
-                wallet as any,
-                { preflightCommitment: "processed" }
-            );
+        if (wallet&& connection) {
+            const provider = new AnchorProvider(localConnection, wallet, {
+                preflightCommitment: "processed"
+            }); 
             const program = new Program(idl as anchor.Idl, programID, provider);
             setProgram(program);
         }

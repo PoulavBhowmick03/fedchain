@@ -11,7 +11,7 @@ const DepositModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
         <ModalHeader>Deposit SOL</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <DepositSol />
+          {/* <DepositSol /> */}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>

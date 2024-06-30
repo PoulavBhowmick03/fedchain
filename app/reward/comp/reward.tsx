@@ -63,11 +63,11 @@ export const SendSolButton: React.FC = () => {
                 type="text"
                 value={receiverAddress}
                 onChange={(e) => setReceiverAddress(e.target.value)}
-                placeholder="Enter receiver's wallet address"
+                placeholder="Enter your wallet address"
                 className={styles.input}
             />
             <button onClick={onClick} className={styles.button}>
-                Send 1.5 SOL
+                Claim Rewards
             </button>
             {txSignature && (
                 <div className={styles.signature}>
